@@ -1,6 +1,6 @@
 streamlit
 pandas
 seaborn
-matplotlib.pyplot
+matplotlib
 pydeck
 streamlit_option_menu
