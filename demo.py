@@ -461,7 +461,8 @@ elif page == "Recommandations marketing":
         st.markdown("**💡 Actions recommandées :**")
         for act in actions:
             st.markdown(f"- {act}")
-        st.markdown("---")
+        if cluster_id != 2: 
+            st.markdown("---")
 
     show_reco(
         3, "Fidélisation + services exclusifs",
