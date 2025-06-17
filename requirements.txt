@@ -1,0 +1,6 @@
+streamlit
+pandas
+seaborn
+matplotlib.pyplot
+pydeck
+streamlit_option_menu
