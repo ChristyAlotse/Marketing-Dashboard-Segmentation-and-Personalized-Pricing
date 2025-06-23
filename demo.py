@@ -437,7 +437,7 @@ if page == "Vue d'ensemble":
     )
 
     # Affichage dans Streamlit
-    st.pydeck_chart(deck)avec streamlit-folium
+    st.pydeck_chart(deck)
 
 # PAGE 2 - ANALYSE PAR CLUSTER
 elif page == "Analyse par cluster":
