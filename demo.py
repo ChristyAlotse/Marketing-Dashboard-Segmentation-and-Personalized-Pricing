@@ -7,7 +7,6 @@ import pydeck as pdk
 from streamlit_option_menu import option_menu
 
 st.set_page_config(page_title="Marketing Dashboard – Segmentation & Personalized Pricing", layout="centered")
-st.set_page_config(initial_sidebar_state = "expanded")
 
 if "page_landing" not in st.session_state:
     st.session_state.page_landing = True
