@@ -4,5 +4,4 @@ seaborn
 matplotlib
 pydeck
 streamlit_option_menu
-streamlit_folium
-folium
+
