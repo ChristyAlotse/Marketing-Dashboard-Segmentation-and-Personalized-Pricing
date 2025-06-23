@@ -366,7 +366,7 @@ page = option_menu(
 
 # FILTRES
 with st.sidebar:
-    st.header("🔎 Filtres")
+    st.sidebar.header("🔎 Filtres")
     selected_clusters = st.multiselect("Cluster(s)", sorted(df["cluster_kpca"].unique()))
     selected_types = st.multiselect("Type de client", sorted(df["customer_type"].unique()))
     selected_regions = st.multiselect("Région", sorted(df["region"].unique()))
