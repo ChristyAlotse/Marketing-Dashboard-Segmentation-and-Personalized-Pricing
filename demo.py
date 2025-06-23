@@ -5,6 +5,8 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 import pydeck as pdk
 from streamlit_option_menu import option_menu
+from streamlit_folium import folium_static
+import folium
 
 #st.set_page_config(page_title="Marketing Dashboard – Segmentation & Personalized Pricing", layout="centered")
 
@@ -399,44 +401,25 @@ if page == "Vue d'ensemble":
     df_region["lat"] = df_region["region"].map(lambda x: region_coords[x][0])
     df_region["lon"] = df_region["region"].map(lambda x: region_coords[x][1])
 
-        # Configuration de la carte avec mode sombre et tooltip
-    view_state = pdk.ViewState(
-        latitude=3.87,
-        longitude=11.5,
-        zoom=5,
-        pitch=0
-    )
+# Carte centrée sur le Cameroun
+    m = folium.Map(location=[4.5, 11.5], zoom_start=6, tiles="CartoDB positron")
 
-    layer = pdk.Layer(
-        "ScatterplotLayer",
-        data=df_region,
-        get_position='[lon, lat]',
-        get_radius='nb_clients * 10',
-        get_fill_color='[255, 100, 100, 160]',
-        pickable=True,  # permet les tooltips
-    )
+    # Ajouter les cercles pour chaque région
+    for _, row in df_region.iterrows():
+        folium.CircleMarker(
+            location=[row["lat"], row["lon"]],
+            radius=row["nb_clients"] / 90,
+            color='crimson',
+            fill=True,
+            fill_opacity=0.8,
+            popup=folium.Popup(
+                html=f"<b>Région :</b> {row['region']}<br><b>Clients :</b> {row['nb_clients']}",
+                max_width=250
+            )
+        ).add_to(m)
 
-    # Tooltip personnalisé : affiche ces infos au survol
-    tooltip = {
-        "html": "<b>Région:</b> {region}<br/>"
-                "<b>Clients:</b> {nb_clients}",
-        "style": {
-            "backgroundColor": "black",
-            "color": "white",
-            "fontSize": "14px"
-        }
-    }
-
-    # Carte avec fond sombre ("dark") + tooltip
-    deck = pdk.Deck(
-        map_style="mapbox://styles/mapbox/light-v9",
-        initial_view_state=view_state,
-        layers=[layer],
-        tooltip=tooltip
-    )
-
-    # Affichage dans Streamlit
-    st.pydeck_chart(deck)
+    # Afficher la carte dans Streamlit
+    folium_static(m)
 
 # PAGE 2 - ANALYSE PAR CLUSTER
 elif page == "Analyse par cluster":
