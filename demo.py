@@ -508,7 +508,7 @@ elif page == "Recommandations marketing":
         [
             "SMS flash : « Rechargez 500 FCFA → 150 Mo gratuits »",
             "Bundles petits prix (300 FCFA/jour)",
-            "Campagnes USSD simples (*123#)"
+            "Campagnes USSD simples (#123#)"
         ],
         "info"
     )
