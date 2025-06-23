@@ -47,8 +47,8 @@ if st.session_state.page_landing:
 
     st.markdown(f"""
         <div class="landing">
-            <h1>Bienvenue dans le Dashboard Client</h1>
-            <p>Analyse, segmentation et actions marketing<br>à impact pour les clients de Orange Cameroun</p>
+            <h1>Bienvenue dans votre espace d'analyse client</h1>
+            <p>Explorer les comportements, identifier les segments clés et orientez vos décisions marketing.<br></p>
         </div>
     """, unsafe_allow_html=True)
 
